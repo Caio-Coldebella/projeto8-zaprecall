@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+}
+h1{
+    font-size: 36px;
+    font-family: 'Righteous', cursive;
+    color: #FFFFFF;
+    margin: 30px 0 40px 0;
+}
+.startscreen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #FB6B6B;
+}
+.startscreen img{
+ width: 136px;
+ height: 161px;
+}
+.startscreen button{
+    width: 246px;
+    height: 54px;
+    filter: drop-shadow(0 10px 10px RGBA(0,0,0,0.2));
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #D70900;
+    font-family: sans-serif;
+    font-size: 18px;
+    color: #D70900;
+}
