@@ -72,3 +72,7 @@ ion-icon{
     font-weight: bold;
     font-size: 16px;
 }
+.open {
+    height: 130px;
+    align-items: flex-start;
+}
