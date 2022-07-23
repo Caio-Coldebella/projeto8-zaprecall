@@ -1,29 +1,27 @@
 import React from "react";
+import AnsweredCard from "./AnsweredCard";
 export default function Card(props){
-    const stateclosed = <div className="boxquestion" key={props.index}>
-        <p>Questao {props.index+1}</p>
-        <ion-icon name="play-outline" onClick={()=>{clickedcard("switchtoquestion")}}></ion-icon>
+    
+    const stateanswer = <div className="boxquestionopen" key={props.index}>
+        <p>{props.item.answer}</p>
+        <div className="answeroptions">
+            <button className="naolembro" onClick={()=>{setCardstate(<AnsweredCard type={"naolembro"} num={props.index}/>)}}>Não lembrei</button>
+            <button className="quase" onClick={()=>{setCardstate(<AnsweredCard type={"quase"} num={props.index}/>)}}>Quase não lembrei</button>
+            <button className="zap" onClick={()=>{setCardstate(<AnsweredCard type={"zap"} num={props.index}/>)}}>Zap!</button>
+        </div>
     </div>;
 
-    const stateopened = <div className="boxquestionopen">
+    const stateopened = <div className="boxquestionopen" key={props.index}>
         <p>{props.item.question}</p>
-        <img src="./assets/setinha.png" alt="setinha" onClick={()=>{clickedcard("switchtoanswer")}}/>
+        <img src="./assets/setinha.png" alt="setinha" onClick={()=>{setCardstate(stateanswer)}}/>
     </div>;
-    
-    const stateanswer = <div className="boxquestionopen">
-        <p>{props.item.answer}</p>
+
+    const stateclosed = <div className="boxquestion" key={props.index}>
+        <p>Questao {props.index+1}</p>
+        <ion-icon name="play-outline" onClick={()=>{setCardstate(stateopened)}}></ion-icon>
     </div>;
 
     const [cardstate, setCardstate] = React.useState(stateclosed);
-    
-    function clickedcard(instruction){
-        if(instruction==="switchtoquestion"){
-            setCardstate(stateopened);
-        }
-        else if(instruction === "switchtoanswer"){
-            setCardstate(stateanswer);
-        }
-    }
     
     return(
         <>
