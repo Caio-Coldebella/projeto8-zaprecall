@@ -5,15 +5,23 @@ export default function Card(props){
         <ion-icon name="play-outline" onClick={()=>{clickedcard("switchtoquestion")}}></ion-icon>
     </div>;
 
-    const stateopened = <div className="boxquestion open">
+    const stateopened = <div className="boxquestionopen">
         <p>{props.item.question}</p>
+        <img src="./assets/setinha.png" alt="setinha" onClick={()=>{clickedcard("switchtoanswer")}}/>
     </div>;
     
+    const stateanswer = <div className="boxquestionopen">
+        <p>{props.item.answer}</p>
+    </div>;
+
     const [cardstate, setCardstate] = React.useState(stateclosed);
     
     function clickedcard(instruction){
         if(instruction==="switchtoquestion"){
             setCardstate(stateopened);
+        }
+        else if(instruction === "switchtoanswer"){
+            setCardstate(stateanswer);
         }
     }
     
