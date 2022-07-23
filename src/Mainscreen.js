@@ -1,38 +1,38 @@
 import React from "react";
 import Card from "./Card";
 import decks from "./decks";
-let arranswers = [];
-let missed = false;
 export default function Mainscreen(){
     const deck = (decks());
+    let arranswers = [];
+    const [error, setError] = React.useState(false);
+    const [finished,setFinished] = React.useState(false);
     const [answers, setAnswers] = React.useState([<p>0/8 concluídos</p>]);
-    if(arranswers.length === 8){
-        if(missed){
+    if(finished){
+        if(error){
             console.log("errou")
         }
         console.log("terminou")
     }
     function addanswer(option){
-        let temp = [<p>{arranswers.length + 1}/8 concluídos</p>];
         if(option==="zap"){
             arranswers.push(<ion-icon name="checkmark-circle"></ion-icon>);
-            temp.push(
-                <div>{arranswers}</div>
-            );
-            setAnswers(temp);
+            setAnswers([<p>{arranswers.length}/8 concluídos</p>,<div>{arranswers}</div>]);
+            if(arranswers.length===8){
+                setFinished(true);
+            }
         }else if(option === "naolembro"){
             arranswers.push(<ion-icon name="close-circle"></ion-icon>);
-            temp.push(
-                <div>{arranswers}</div>
-            );
-            missed = true;
-            setAnswers(temp);
+            setAnswers([<p>{arranswers.length}/8 concluídos</p>,<div>{arranswers}</div>]);
+            setError(true);
+            if(arranswers.length===8){
+                setFinished(true);
+            }
         }else if(option === "quase"){
             arranswers.push(<ion-icon name="help-circle"></ion-icon>);
-            temp.push(
-                <div>{arranswers}</div>
-            );
-            setAnswers(temp);
+            setAnswers([<p>{arranswers.length}/8 concluídos</p>,<div>{arranswers}</div>]);
+            if(arranswers.length===8){
+                setFinished(true);
+            }
         }
     }
     return(
