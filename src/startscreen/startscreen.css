@@ -14,6 +14,7 @@
 .startscreen button{
     width: 246px;
     height: 54px;
+    margin: 20px 0 0 0;
     filter: drop-shadow(0 10px 10px RGBA(0,0,0,0.2));
     border-radius: 5px;
     background-color: #FFFFFF;
@@ -21,4 +22,11 @@
     font-family: 'Courier New';
     font-size: 18px;
     color: #D70900;
+}
+.startscreen input{
+    height: 43px;
+    width: 246px;
+    text-align: center;
+    font-family: 'Courier New';
+    font-size: 12px;
 }

@@ -21,8 +21,8 @@ function addcheck(arranswers,setBottombarclass,setAnswers,error,nameicon){
     }   
 }
 
-export default function Mainscreen(){
-    let deck = (decks());
+export default function Mainscreen(props){
+    const deck = (decks(props.seldeck));
     let arranswers = [];
     let error = false;
     const [bottombarclass, setBottombarclass] = React.useState("bottombar");
@@ -44,7 +44,7 @@ export default function Mainscreen(){
                     <img src={logopequeno} alt="logo"/>
                     <h1>ZapRecall</h1>
                 </div>
-                {deck[0].map((item,index)=>{return <Card key={index} index={index} item={item} addanswer={addanswer}/>})}
+                {deck.map((item,index)=>{return <Card key={index} index={index} item={item} addanswer={addanswer}/>})}
             </div>
             <div className={bottombarclass}>
                 {answers}
