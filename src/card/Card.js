@@ -1,5 +1,8 @@
 import React from "react";
-import AnsweredCard from "./AnsweredCard";
+import AnsweredCard from "../answeredcard/AnsweredCard";
+import setinha from "../assets/setinha.png";
+import "./card.css";
+
 export default function Card(props){
     
     const stateanswer = <div className="boxquestionopen" key={props.index}>
@@ -13,7 +16,7 @@ export default function Card(props){
 
     const stateopened = <div className="boxquestionopen" key={props.index}>
         <p>{props.item.question}</p>
-        <img src="./assets/setinha.png" alt="setinha" onClick={()=>{setCardstate(stateanswer)}}/>
+        <img src={setinha} alt="setinha" onClick={()=>{setCardstate(stateanswer)}}/>
     </div>;
 
     const stateclosed = <div className="boxquestion" key={props.index}>

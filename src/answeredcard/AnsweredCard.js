@@ -1,3 +1,5 @@
+import "./answeredcard.css";
+
 export default function AnsweredCard(props){
     let icon = null;
     let pcontent = null;

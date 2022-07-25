@@ -1,6 +1,8 @@
 import React from "react";
-import StartScreen from "./StartScreen";
-import Mainscreen from "./Mainscreen";
+import StartScreen from "./startscreen/StartScreen";
+import Mainscreen from "./mainscreen/Mainscreen";
+import "./css/reset.css";
+import "./css/style.css"
 function changescreen(screen,fstscreen,secscreen,setScreen){
     if(screen === fstscreen){
         setScreen(secscreen);
