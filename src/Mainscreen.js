@@ -1,37 +1,47 @@
 import React from "react";
 import Card from "./Card";
 import decks from "./decks";
+
 export default function Mainscreen(){
-    const deck = (decks());
+    let deck = (decks());
     let arranswers = [];
-    const [error, setError] = React.useState(false);
-    const [finished,setFinished] = React.useState(false);
-    const [answers, setAnswers] = React.useState([<p>0/8 concluídos</p>]);
-    if(finished){
-        if(error){
-            console.log("errou")
-        }
-        console.log("terminou")
-    }
+    let error = false;
+    const [bottombarclass, setBottombarclass] = React.useState("bottombar");
+    const [answers, setAnswers] = React.useState([<p key={0}>0/8 concluídos</p>]);
     function addanswer(option){
         if(option==="zap"){
-            arranswers.push(<ion-icon name="checkmark-circle"></ion-icon>);
-            setAnswers([<p>{arranswers.length}/8 concluídos</p>,<div>{arranswers}</div>]);
-            if(arranswers.length===8){
-                setFinished(true);
+            arranswers.push(<ion-icon key={arranswers.length} name="checkmark-circle"></ion-icon>);
+            if(arranswers.length === 8){
+                setBottombarclass("bottombar extended");
+                if(error){
+                    setAnswers([<span key={11}><img src="./assets/sad.png" alt="sad"/> Putz...</span>,<div key={12}><p>Ainda faltam alguns...</p><p>Mas não desanime!</p></div>,<p key={0}>{arranswers.length}/8 concluídos</p>,<div key={10}>{arranswers}</div>]);
+                }else{
+                    setAnswers([<span key={11}><img src="./assets/party.png" alt="sad"/> Parabéns!</span>,<div key={12}><p>Você não esqueceu de</p><p>nenhum flashcard!</p></div>,<p key={0}>{arranswers.length}/8 concluídos</p>,<div key={10}>{arranswers}</div>]);
+                }
+            }
+            else{
+                setAnswers([<p key={0}>{arranswers.length}/8 concluídos</p>,<div key={10}>{arranswers}</div>]);
             }
         }else if(option === "naolembro"){
-            arranswers.push(<ion-icon name="close-circle"></ion-icon>);
-            setAnswers([<p>{arranswers.length}/8 concluídos</p>,<div>{arranswers}</div>]);
-            setError(true);
-            if(arranswers.length===8){
-                setFinished(true);
+            arranswers.push(<ion-icon key={arranswers.length} name="close-circle"></ion-icon>);
+            error = true;
+            if(arranswers.length === 8){
+                setBottombarclass("bottombar extended");
+                setAnswers([<span key={11}><img src="./assets/sad.png" alt="sad"/> Putz...</span>,<div key={12}><p>Você não esqueceu de</p><p>nenhum flashcard!</p></div>,<p key={0}>{arranswers.length}/8 concluídos</p>,<div key={10}>{arranswers}</div>]);
+            }else{
+                setAnswers([<p key={0}>{arranswers.length}/8 concluídos</p>,<div key={10}>{arranswers}</div>]);
             }
         }else if(option === "quase"){
-            arranswers.push(<ion-icon name="help-circle"></ion-icon>);
-            setAnswers([<p>{arranswers.length}/8 concluídos</p>,<div>{arranswers}</div>]);
+            arranswers.push(<ion-icon key={arranswers.length} name="help-circle"></ion-icon>);
             if(arranswers.length===8){
-                setFinished(true);
+                setBottombarclass("bottombar extended");
+                if(error){
+                    setAnswers([<span key={11}><img src="./assets/sad.png" alt="sad"/> Putz...</span>,<div key={12}><p>Ainda faltam alguns...</p><p>Mas não desanime!</p></div>,<p key={0}>{arranswers.length}/8 concluídos</p>,<div key={10}>{arranswers}</div>]);
+                }else{
+                    setAnswers([<span key={11}><img src="./assets/party.png" alt="sad"/> Parabéns!</span>,<div key={12}><p>Você não esqueceu de</p><p>nenhum flashcard!</p></div>,<p key={0}>{arranswers.length}/8 concluídos</p>,<div key={10}>{arranswers}</div>]);
+                }
+            }else{
+                setAnswers([<p key={0}>{arranswers.length}/8 concluídos</p>,<div key={10}>{arranswers}</div>]);
             }
         }
     }
@@ -44,7 +54,7 @@ export default function Mainscreen(){
                 </div>
                 {deck[0].map((item,index)=>{return <Card key={index} index={index} item={item} addanswer={addanswer}/>})}
             </div>
-            <div className="bottombar">
+            <div className={bottombarclass}>
                 {answers}
             </div>
         </>

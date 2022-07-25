@@ -11,6 +11,11 @@ ion-icon{
     width: 23px;
     height: 23px;
 }
+span{
+    font-family:sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
 .startscreen{
     display: flex;
     flex-direction: column;
@@ -145,16 +150,20 @@ ion-icon[name=checkmark-circle]{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: 1;
     height: 70px;
     width: 100vw;
+    padding: 10px 0 5px 0;
     background-color: #FFFFFF;
 }
 .bottombar p{
     font-family: 'Courier New';
     font-size: 18px;
+}
+.extended{
+    height: 170px;
 }

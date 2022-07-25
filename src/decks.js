@@ -1,5 +1,5 @@
 export default function decks(){
-    return([[
+    let arr = [[
         {question: "O que é JSX?", answer: "Uma extensão de linguagem do JavaScript"},
         {question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces"},
         {question: "Componentes devem iniciar com __", answer: "letra maiúscula"},
@@ -8,5 +8,7 @@ export default function decks(){
         {question: "Usamos o npm para __", answer: "gerenciar os pacotes necessários e suas dependências"},
         {question: "Usamos props para __", answer: "passar diferentes informações para componentes"},
         {question: "Usamos estado (state) para __", answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"},            
-    ]]);
+    ]];
+    arr[0].sort(()=>{return (Math.random() - 0.5)});
+    return arr;
     }
